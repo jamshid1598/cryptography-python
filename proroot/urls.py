@@ -31,6 +31,8 @@ urlpatterns = [
     # rest_framework api url route for login and logout
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     
+    path('', include('apps.core.urls', namespace='core')),
+    
 ]
 
 if settings.DEBUG:

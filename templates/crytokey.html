@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 
 {% block body %}
+    <h1>Message</h1>
+
+    <a href="{% url 'core:encrypt' %}">encrypt</a>
+    <a href="{% url 'core:decrypt' %}">decrypt</a>
        
 {% endblock  %}

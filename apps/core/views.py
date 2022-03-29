@@ -20,6 +20,7 @@ from .models import (
 
 def generate_key(request, *args, **kwargs):
     context = {}
+    template_name='crytokey.html'
     
     private_key = rsa.generate_private_key(
         public_exponent=65537,
@@ -30,4 +31,16 @@ def generate_key(request, *args, **kwargs):
     
     context['private_key'] = private_key
     context['public_key'] = public_key
-    return render(request, '', context)
+    return render(request, template_name, context)
+
+
+
+def encrypt_message(request, *args, **kwargs):
+    context = {}
+    return render(request, 'message.html', context)
+
+
+
+def decrypt_message(request, *args, **kwargs):
+    context = {}
+    return render(request, 'message.html', context)

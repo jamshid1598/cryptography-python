@@ -46,6 +46,7 @@ INSTALLED_APPS += [
     
     # local apps
     'apps.users.apps.UsersConfig',
+    'apps.core.apps.CoreConfig',
     
 ]
 
@@ -91,7 +92,7 @@ SIMPLE_JWT = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / '../templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
