@@ -34,6 +34,26 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 
+# Application definition
+INSTALLED_APPS += [
+    # 3rd party apps
+    'tinymce',                  # django-tinymce4-lite==1.8.0
+    'phonenumber_field',        # django-phonenumber-field[phonenumbers]==5.2.0 (django-phonenumber-field[phonenumbers] or django-phonenumber-field[phonenumberslite]) 
+    'rest_framework',           # djangorestframework==3.12.4 (django-rest-framework)
+    'rest_framework_simplejwt', # djangorestframework-simplejwt==5.0.0 (django-rest-framework-simplejwt)
+    'smart_selects',            # django-smart-selects==1.5.9
+    'import_export',            # django-import-export==2.6.1
+    
+    # local apps
+    'apps.users.apps.UsersConfig',
+    
+]
+
+
+# custom student user model
+AUTH_USER_MODEL = "users.User"
+
+
 # django-rest-framework-simplejwt configuration
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
@@ -68,24 +88,21 @@ SIMPLE_JWT = {
 }
 
 
-# Application definition
-INSTALLED_APPS += [
-    # 3rd party apps
-    'tinymce',                  # django-tinymce4-lite==1.8.0
-    'phonenumber_field',        # django-phonenumber-field[phonenumbers]==5.2.0 (django-phonenumber-field[phonenumbers] or django-phonenumber-field[phonenumberslite]) 
-    'rest_framework',           # djangorestframework==3.12.4 (django-rest-framework)
-    'rest_framework_simplejwt', # djangorestframework-simplejwt==5.0.0 (django-rest-framework-simplejwt)
-    'smart_selects',            # django-smart-selects==1.5.9
-    'import_export',            # django-import-export==2.6.1
-    
-    # local apps
-    'apps.users.apps.UsersConfig',
-    
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
 ]
-
-
-# custom student user model
-AUTH_USER_MODEL = "users.User"
 
 
 # Internationalization
