@@ -3,6 +3,13 @@
 {% block body %}
     <h1>Encrypt/Decrypt</h1>
 
-    <a href="{% url 'core:key' %}">home</a>
+    <form method=post>
+        <div class='generated-keys'>
+            <textarea cols=70 rows=10 placeholder="private key..."></textarea>
+            <textarea cols=70 rows=10 placeholder="public key..."></textarea>
+        </div>
+    </form>
+
+    <a href="{% url 'core:generate_key' %}">home</a>
 
 {% endblock  %}

@@ -1,9 +1,58 @@
 {% extends 'index.html' %}
 
 {% block body %}
-    <h1>Message</h1>
+    
+    {% if key_info.name %}
+        <h1>{{ key_info.name }}</h1>
+    {% else %}
+        <h1>Asymmetric Cryptography</h1>
+    {% endif %}
 
-    <a href="{% url 'core:encrypt' %}">encrypt</a>
-    <a href="{% url 'core:decrypt' %}">decrypt</a>
+    {% if key_info %}
+        <div class='generated-keys'>
+            <textarea cols=70 rows=30 readonly> {{ key_info.private_key|safe }} </textarea>
+            <textarea cols=70 rows=30 readonly> {{ key_info.public_key|safe }} </textarea>
+        </div>
+    {% else %}
+        <div class='generated-keys'>
+            <textarea cols=70 rows=30 readonly> </textarea>
+            <textarea cols=70 rows=30 readonly> </textarea>
+        </div>
+    {% endif %}
+
+
+    <form method='post' action='{% url "core:generate_key" %}'>
+        {% csrf_token %}
+        <input name='name' id='name' placeholder='key name' required>
+        <button type='submit'>generate new key</button>
+    </form>
+
+
+    <div>
+        <ul>
+            {% for key in key_queryset %}
+                <div>
+                    <li>
+                        <a href='{% url "core:home" key.id %}'>{{ key.name }}</a> 
+                        {% if key.private_key_file %}
+                            <a href='{{ key.publicKeyUrl }}'>download private key</a>
+                        {% endif %}
+                        {% if key.public_key_file %}
+                            <a href='{{ key.privateKeyUrl }}'>download public key</a>
+                        {% endif %}
+                        <p>{{ key.updated_at|date:'D d M Y' }}</p>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+    
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a href="{% url 'core:encrypt' %}">encrypt/decrypt</a>
        
 {% endblock  %}

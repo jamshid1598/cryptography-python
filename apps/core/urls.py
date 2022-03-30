@@ -1,9 +1,10 @@
 from django.urls import path
 
 from .views import (
-    generate_key,
-    encrypt_message,
-    decrypt_message,
+    home_view,
+    generate_key_view,
+    encrypt_message_view,
+    decrypt_message_view,
 )
 
 
@@ -11,7 +12,9 @@ from .views import (
 app_name = 'core'
 
 urlpatterns = [
-    path('', generate_key, name='key'),
-    path('encrypt/', encrypt_message, name='encrypt'),
-    path('decrypt/', decrypt_message, name='decrypt'),
+    path('', home_view, name='home'),
+    path('update-key/<int:id>/', home_view, name='home'),
+    path('generate/key/', generate_key_view, name='generate_key'),
+    path('encrypt/', encrypt_message_view, name='encrypt'),
+    path('decrypt/', decrypt_message_view, name='decrypt'),
 ]
