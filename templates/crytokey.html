@@ -10,13 +10,13 @@
 
     {% if key_info %}
         <div class='generated-keys'>
-            <textarea cols=70 rows=30 readonly> {{ key_info.private_key|safe }} </textarea>
-            <textarea cols=70 rows=30 readonly> {{ key_info.public_key|safe }} </textarea>
+            <textarea cols=70 rows=30 placeholder="private key..." readonly>{{ key_info.private_key|safe }}</textarea>
+            <textarea cols=70 rows=30 placeholder="public key..." readonly>{{ key_info.public_key|safe }}</textarea>
         </div>
     {% else %}
         <div class='generated-keys'>
-            <textarea cols=70 rows=30 readonly> </textarea>
-            <textarea cols=70 rows=30 readonly> </textarea>
+            <textarea cols=70 rows=30 placeholder="private key..." readonly></textarea>
+            <textarea cols=70 rows=30 placeholder="public key..." readonly></textarea>
         </div>
     {% endif %}
 
@@ -29,10 +29,10 @@
 
 
     <div>
-        <ul>
+        <ul style="display: inline-block;">
             {% for key in key_queryset %}
-                <div>
-                    <li>
+                <li>
+                    <div>
                         <a href='{% url "core:home" key.id %}'>{{ key.name }}</a> 
                         {% if key.private_key_file %}
                             <a href='{{ key.publicKeyUrl }}'>download private key</a>
@@ -41,8 +41,8 @@
                             <a href='{{ key.privateKeyUrl }}'>download public key</a>
                         {% endif %}
                         <p>{{ key.updated_at|date:'D d M Y' }}</p>
-                    </li>
-                </div>
+                    </div>
+                </li>
             {% endfor %}
         </ul>
     </div>

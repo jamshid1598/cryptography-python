@@ -12,8 +12,8 @@ class CryptoKey(models.Model):
     private_key_file = models.FileField(upload_to='keys/privateKey/', blank=True, null=True)
     public_key_file = models.FileField(upload_to='keys/publicKeys/', blank=True, null=True)
     
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
         ordering = ['id', 'name', 'created_at']
@@ -44,8 +44,8 @@ class CryptoMessage(models.Model):
     
     public_key = models.TextField(blank=True, null=True)
     
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
         ordering = ['id', 'created_at']

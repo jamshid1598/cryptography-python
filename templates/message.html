@@ -4,10 +4,19 @@
     <h1>Encrypt/Decrypt</h1>
 
     <form method=post>
+        
+        <textarea cols=70 rows=8 placeholder="private key..."></textarea>
+        <textarea cols=70 rows=8 placeholder="public key..."></textarea>
+        
         <div class='generated-keys'>
-            <textarea cols=70 rows=10 placeholder="private key..."></textarea>
-            <textarea cols=70 rows=10 placeholder="public key..."></textarea>
+            <textarea cols=70 rows=20 placeholder="Please enter what needs to be encrypted or decrypted"></textarea>
+            <textarea cols=70 rows=20 placeholder="The results will be displayed here."></textarea>
         </div>
+
+
+        <button type="submit">Encrypt/Decrypt</button>
+
+
     </form>
 
     <a href="{% url 'core:generate_key' %}">home</a>
