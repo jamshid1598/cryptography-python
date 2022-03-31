@@ -23,7 +23,8 @@
 
     <form method='post' action='{% url "core:generate_key" %}'>
         {% csrf_token %}
-        <input name='name' id='name' placeholder='key name' required>
+        {{ form.non_field_errors }}
+        <input type='text' name='name' id='name' placeholder='Key name ...' required>
         <button type='submit'>generate new key</button>
     </form>
 
@@ -53,6 +54,6 @@
     <br>
     <br>
 
-    <a href="{% url 'core:encrypt' %}">encrypt/decrypt</a>
+    <a href="{% url 'core:encrypt_decrypt' %}">encrypt/decrypt</a>
        
 {% endblock  %}

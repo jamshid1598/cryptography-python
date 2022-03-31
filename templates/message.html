@@ -4,21 +4,36 @@
     <h1>Encrypt/Decrypt</h1>
 
     <form method=post>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
         
-        <textarea cols=70 rows=8 placeholder="private key..."></textarea>
-        <textarea cols=70 rows=8 placeholder="public key..."></textarea>
-        
-        <div class='generated-keys'>
-            <textarea cols=70 rows=20 placeholder="Please enter what needs to be encrypted or decrypted"></textarea>
-            <textarea cols=70 rows=20 placeholder="The results will be displayed here."></textarea>
-        </div>
+        {# <textarea name="private_key" id='private_key' cols=70 rows=8 placeholder="private key..."></textarea> #}
+        {# <textarea name="public_key" id='public_key' cols=70 rows=8 placeholder="public key..."></textarea> #}
+        {{ form.private_key }}
+        {{ form.private_key.errors }}
 
+        {{ form.public_key }}
+        {{ form.public_key.errors }}
+
+        <div class='generated-keys'>
+            {#<textarea name="default_text" id='default_text' cols=70 rows=20 #}
+            {#placeholder="Please enter what needs to be encrypted or decrypted" required></textarea> #}
+            {{ form.message }}
+            {{ form.message.error }}
+            
+            <textarea name="result_text" id="result_text" cols=70 rows=20 
+            placeholder="The results will be displayed here." readonly>{{ result_message }}</textarea>
+        </div>
 
         <button type="submit">Encrypt/Decrypt</button>
 
-
     </form>
 
-    <a href="{% url 'core:generate_key' %}">home</a>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a href="{% url 'core:home' %}">home</a>
 
 {% endblock  %}
