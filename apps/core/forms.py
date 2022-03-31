@@ -18,14 +18,14 @@ class GenerateKeyForm(forms.Form):
 
 class encryptDecryptForm(forms.Form):
 	private_key = forms.CharField(widget=forms.Textarea(attrs={
-                               'type':"text", 'name': "private_key", 'id': 'private_key', 
-                               'cols':70, 'rows':8,'placeholder':"Enter private key ..."}), required=False)
+                               'type':"text", 'class':"form-control",'name': "private_key", 'id': 'private_key', 
+                               'cols': 30, 'rows': 2,'placeholder':"Enter private key ..."}), required=False)
 	public_key = forms.CharField(widget=forms.Textarea(attrs={
-                               'type':"text", 'name': "public_key", 'id': 'public_key', 
-                               'cols':70, 'rows':8,'placeholder':"Enter public key ..."}), required=False)
+                               'type':"text",'class':"form-control", 'name': "public_key", 'id': 'public_key', 
+                               'cols': 30, 'rows': 2,'placeholder':"Enter public key ..."}), required=False)
 	message = forms.CharField(widget=forms.Textarea(attrs={
-                               'type':"text", 'name': "result_text", 'id': "result_text", 
-                               'cols': 70, 'rows': 20,
+                               'type':"text",'class':"form-control", 'name': "result_text", 'id': "result_text", 
+                               'cols': 30, 'rows': 10,
                                'placeholder': "Please enter what needs to be encrypted or decrypted ..."}), required=True)
 	
 	def clean(self):

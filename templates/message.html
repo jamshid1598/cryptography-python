@@ -1,38 +1,72 @@
 {% extends 'index.html' %}
 
 {% block body %}
-    <h1>Encrypt/Decrypt</h1>
+    <div class="container-fluid py-2"  style="background-color: lightgray;">
+        <form action="" class="" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-row">
+                <div class="col-12 col-sm-12 col-md-7">
+                    <fieldset>
+                        <legend>Input text</legend>
+                        <div class="form-row">
+                            <div class="col-12" style="margin-top:30px">
+                                <fieldset>
+                                    <legend>Generate</legend>
+                                    <div class=" form-row" style="margin-top:30px">
+                                        <div class="form-group col-12">
+                                            {{ form.private_key }}
+                                             {{ form.private_key.errors }}
+                                         
+                                        </div>
+                                        <div class="form-group col-12">
+                                            {{ form.public_key }}
+                                             {{ form.public_key.errors }}
+                                           
+                                        </div>
 
-    <form method=post>
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        
-        {# <textarea name="private_key" id='private_key' cols=70 rows=8 placeholder="private key..."></textarea> #}
-        {# <textarea name="public_key" id='public_key' cols=70 rows=8 placeholder="public key..."></textarea> #}
-        {{ form.private_key }}
-        {{ form.private_key.errors }}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px">
+                            <div class="col-12">
+                                <fieldset>
+                                    <legend>My text</legend>
+                                    <div class="form-row" style="margin-top:30px">
+                                        <div class="form-group col-12 col-sm-9 col-md-9 col-lg-10">
+                                            {{ form.message }}
+                                            {{ form.message.error }}
+                                           
+                                        </div>
+                                        <div class="form-group col-12 col-sm-3 col-md-3 col-lg-2">
+                                            <div class="d-flex flex-column justify-content-end .justify-content-md-center">
+                                                <button class="btn btn-sm" style="background-color: #9DAAF2; color:#fff;" type="submit">Enc/Dec</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-12 col-sm-12 col-md-5 mt-2 mt-md-0">
+                    <fieldset class="h-100">
+                        <legend>Output text</legend>
+                        <div class="row" style="margin-top:30px">
+                            <div class="form-group col-12">
+                                <textarea class="form-control" name="result_text" id="result_text" cols="30" rows="21" 
+                                    placeholder="The results will be displayed here." readonly>{{ result_message }}</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        {{ form.public_key }}
-        {{ form.public_key.errors }}
 
-        <div class='generated-keys'>
-            {#<textarea name="default_text" id='default_text' cols=70 rows=20 #}
-            {#placeholder="Please enter what needs to be encrypted or decrypted" required></textarea> #}
-            {{ form.message }}
-            {{ form.message.error }}
-            
-            <textarea name="result_text" id="result_text" cols=70 rows=20 
-            placeholder="The results will be displayed here." readonly>{{ result_message }}</textarea>
-        </div>
 
-        <button type="submit">Encrypt/Decrypt</button>
-
-    </form>
-
-    <br>
-    <br>
-    <br>
-    <br>
 
     <a href="{% url 'core:home' %}">home</a>
 
