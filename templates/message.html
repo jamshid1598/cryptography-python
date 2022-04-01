@@ -2,6 +2,7 @@
 
 {% block body %}
     <div class="container-fluid py-2"  style="background-color: lightgray;">
+
         <form action="" class="" method="post">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -65,9 +66,29 @@
         </form>
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
 
+    <div> 
+        {% if errors %}
+            {% for error in errors %}
+                {% if error %}:
+                    <p>{{ error }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
 
 
     <a href="{% url 'core:home' %}">home</a>
+
+
 
 {% endblock  %}

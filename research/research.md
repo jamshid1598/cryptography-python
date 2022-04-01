@@ -6,3 +6,16 @@
 
 [Asymmetric Encrypting of sensitive data in memory (Python)] -> (https://towardsdatascience.com/asymmetric-encrypting-of-sensitive-data-in-memory-python-e20fdebc521c)
 
+
+
+
+
+## Symmetric cryptography
+
+[symmetric-vs-asymmetric-encryption] -> (https://www.trentonsystems.com/blog/symmetric-vs-asymmetric-encryption)
+
+[Advanced Encryption Standard (AES)] -> (fastest and most secure symmetric encryption)
+
+
+
+
