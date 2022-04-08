@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 
+
 {% block body %}
     <div class="container-fluid py-2"  style="background-color: lightgray;">
 
@@ -23,13 +24,13 @@
                                         <div class="form-group col-12">
                                             {{ form.public_key }}
                                              {{ form.public_key.errors }}
-                                           
                                         </div>
 
                                     </div>
                                 </fieldset>
                             </div>
                         </div>
+
                         <div class="row" style="margin-top:20px">
                             <div class="col-12">
                                 <fieldset>
@@ -38,7 +39,6 @@
                                         <div class="form-group col-12 col-sm-9 col-md-9 col-lg-10">
                                             {{ form.message }}
                                             {{ form.message.error }}
-                                           
                                         </div>
                                         <div class="form-group col-12 col-sm-3 col-md-3 col-lg-2">
                                             <div class="d-flex flex-column justify-content-end .justify-content-md-center">
@@ -51,6 +51,7 @@
                         </div>
                     </fieldset>
                 </div>
+
                 <div class="col-12 col-sm-12 col-md-5 mt-2 mt-md-0">
                     <fieldset class="h-100">
                         <legend>Output text</legend>
