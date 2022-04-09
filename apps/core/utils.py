@@ -45,17 +45,23 @@ def get_generated_key(request, *args, **kwargs):
 
 def load_key(request, private_key=None, public_key=None, password=None, *args, **kwargs):
     if private_key:
-        private_key = serialization.load_pem_private_key(
-            private_key.encode(),
-            password=password,
-        )
-        return private_key
+        try:
+            private_key = serialization.load_pem_private_key(
+                private_key.encode(),
+                password=password,
+            )
+            return private_key
+        except Exception as e:
+            print("deserialize private key in load_key: ", e)
     
     elif public_key:
-        public_key = serialization.load_pem_public_key(
-            public_key.encode(),
-        )
-        return public_key
+        try:
+            public_key = serialization.load_pem_public_key(
+                public_key.encode(),
+            )
+            return public_key
+        except  Exception as e:
+            print("deserialize public key in load_key: ", e)
 
     else:
         return None
@@ -65,19 +71,20 @@ def encryption_view(request, public_key, message, *args, **kwargs):
     public_key = load_key(request, public_key=public_key, *args, **kwargs)
     cipher_message = None
     
-    try:
-        cipher_message = public_key.encrypt(
-            message.encode('utf-8'),
-            padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None
+    if public_key:
+        try:
+            cipher_message = public_key.encrypt(
+                message.encode('utf-8'),
+                padding.OAEP(
+                    mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                    algorithm=hashes.SHA256(),
+                    label=None
+                )
             )
-        )
-        cipher_message = str(base64.b64encode(cipher_message),'utf-8')
-    except Exception as e:
-        print("Error in 'encryption_view': ", e)
-    
+            cipher_message = str(base64.b64encode(cipher_message),'utf-8')
+        except Exception as e:
+            print("Error in 'encryption_view': ", e)
+        
     return cipher_message
 
 
