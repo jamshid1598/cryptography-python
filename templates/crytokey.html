@@ -2,58 +2,106 @@
 
 {% block body %}
     
-    {% if key_info.name %}
+    {% comment %} {% if key_info.name %}
         <h1>{{ key_info.name }}</h1>
     {% else %}
         <h1>Asymmetric Cryptography</h1>
-    {% endif %}
-
-    {% if key_info %}
-        <div class='generated-keys'>
-            <textarea cols=70 rows=30 placeholder="private key..." readonly>{{ key_info.private_key|safe }}</textarea>
-            <textarea cols=70 rows=30 placeholder="public key..." readonly>{{ key_info.public_key|safe }}</textarea>
-        </div>
-    {% else %}
-        <div class='generated-keys'>
-            <textarea cols=70 rows=30 placeholder="private key..." readonly></textarea>
-            <textarea cols=70 rows=30 placeholder="public key..." readonly></textarea>
-        </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
 
-    <form method='post' action='{% url "core:generate_key" %}'>
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        <input type='text' name='name' id='name' placeholder='Key name ...' required>
-        <button type='submit'>generate new key</button>
-    </form>
-
-
-    <div>
-        <ul style="display: inline-block;">
-            {% for key in key_queryset %}
-                <li>
-                    <div>
-                        <a href='{% url "core:home" key.id %}'>{{ key.name }}</a> 
-                        {% if key.private_key_file %}
-                            <a href='{{ key.publicKeyUrl }}'>download private key</a>
-                        {% endif %}
-                        {% if key.public_key_file %}
-                            <a href='{{ key.privateKeyUrl }}'>download public key</a>
-                        {% endif %}
-                        <p>{{ key.updated_at|date:'D d M Y' }}</p>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="container-fluid py-2">
+        
+            <div class="form-row">
+                <div class="col-9">
+                    <fieldset>
+                        <legend>Input text</legend>
+                        <div class="form-row">
+                            <div class="col-12" style="margin-top:30px">
+                                <fieldset>
+                                    <legend>Generate</legend>
+                                    <div class=" form-row" style="margin-top:30px">
+                                        {% if key_info %}
+                                        <div class="form-group col-6 generated-keys">
+                                            <textarea class="form-control small" rows="18" name="" id="" placeholder="private key..." readonly>{{ key_info.private_key|safe }}</textarea>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <textarea class="form-control small" rows="18" name="" id="" placeholder="public key..." readonly>{{ key_info.public_key|safe }}</textarea>
+                                        </div>
+                                        {% else %}
+                                        <div class="form-group col-6 generated-keys">
+                                            <textarea class="form-control small" rows="18" name="" id="" placeholder="private key..." readonly></textarea>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <textarea class="form-control small" rows="18" name="" id="" placeholder="public key..." readonly></textarea>
+                                        </div>
+                                        {% endif %}
+                                        <div class="col-12">
+                                            <form method='post' class='w-100 d-flex' action='{% url "core:generate_key" %}'>
+                                                {% csrf_token %}
+                                                {{ form.non_field_errors }}
+                                                
+                                                <input type="text" name='name' id='name' class="form-control mr-3" placeholder='Key name ...' required>
+                                                <button class="btn btn-sm" style="background-color: #9DAAF2; color:#fff;" type="submit">Generate</button>
+                                            </form>                                            
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-3">
+                    <fieldset class="h-100">
+                        <legend>Save Generate</legend>
+                        <div class="form-row">
+                            <div class="col-12" style="margin-top:30px">
+                                <div class="p-3">
+                                    <h4>Save Generate</h4>
+                                    <div class="">
+                                        <ul class="unstyled">
+                                            {% for key in key_queryset %}
+                                            <li>
+                                                <div>
+                                                    <a href='{% url "core:home" key.id %}'>{{ key.name }}</a> 
+                                                    {% if key.private_key_file %}
+                                                        <a href='{{ key.publicKeyUrl }}'>download private key</a>
+                                                    {% endif %}
+                                                    {% if key.public_key_file %}
+                                                        <a href='{{ key.privateKeyUrl }}'>download public key</a>
+                                                    {% endif %}
+                                                    <p>{{ key.updated_at|date:'D d M Y' }}</p>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     
 
-    <br>
-    <br>
-    <br>
-    <br>
-
+    
     <a href="{% url 'core:encrypt_decrypt' %}">encrypt/decrypt</a>
        
 {% endblock  %}
