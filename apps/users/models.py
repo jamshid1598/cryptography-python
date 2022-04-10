@@ -15,7 +15,7 @@ from .manager import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     id       = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     username = models.CharField(_("Username"), max_length=100, help_text='This field must be required', unique=True)
-    image    = models.ImageField(_('Image'), upload_to=f'user-images/')
+    image    = models.ImageField(_('Image'), blank=True, null=True, upload_to=f'user-images/')
     
     # user private info
     first_name  = models.CharField(_("First Name"), max_length=200, blank=True, null=True)
@@ -26,8 +26,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     jshshir     = models.CharField(_("JSHSHIR"), max_length=100, help_text=_('optional'), blank=True, null=True) 
     
     # contact info
-    email       = models.EmailField(_('Email'), max_length=200, help_text=_('this field must be required'), unique=True)
-    phonenumber = PhoneNumberField(_('Phone-number'), help_text=_('this field must be required'), unique=True)
+    email       = models.EmailField(_('Email'), max_length=200, blank=True, null=True, help_text=_('this field must be required'), unique=True)
+    phonenumber = PhoneNumberField(_('Phone-number'), blank=True, null=True, help_text=_('this field must be required'), unique=True)
     
     # user type
     # is_student   = models.BooleanField(_("is student"), help_text=_('optional'), default=False)

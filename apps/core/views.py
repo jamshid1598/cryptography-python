@@ -4,6 +4,8 @@ from django.views.generic import (
 	CreateView, 
 	UpdateView,
 )
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # CRYPTOGRAPHY
 from cryptography.hazmat.backends import default_backend
@@ -32,6 +34,7 @@ def get_queryset(id=None):
 		return None, CryptoKey.objects.all()
 
 
+@login_required
 def home_view(request, id=None, *args, **kwargs):
 	context = {}
 	template_name = 'crytokey.html'
@@ -39,6 +42,7 @@ def home_view(request, id=None, *args, **kwargs):
 	return render(request, template_name, context)
 
 
+@login_required
 def generate_key_view(request, *args, **kwargs):
 	form = GenerateKeyForm(request.POST)
 	if form.is_valid():
@@ -51,6 +55,7 @@ def generate_key_view(request, *args, **kwargs):
 		return redirect("core:home")
 
 
+@login_required
 def encryptDecryptView(request, *args, **kwargs):
 	context = {}
 	form = encryptDecryptForm(request.POST)
@@ -62,9 +67,9 @@ def encryptDecryptView(request, *args, **kwargs):
 	return render(request, 'message.html', context)
 
 
-class EncryptDecryptView(View):
+class EncryptDecryptView(LoginRequiredMixin, View):
 	template_name='message.html'
-	context={}
+	context={}	
 	
 	def get(self, request, *args, **kwargs):
 		form = encryptDecryptForm()
