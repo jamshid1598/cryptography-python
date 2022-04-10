@@ -1,3 +1,5 @@
+## aymmetric cryptography
+
 [Asymmetric Encryption/Decryption in Python] -> (https://nitratine.net/blog/post/asymmetric-encryption-and-decryption-in-python/)
 
 [Cryptography] -> (https://cryptography.io/en/stable/)
@@ -7,10 +9,13 @@
 [Asymmetric Encrypting of sensitive data in memory (Python)] -> (https://towardsdatascience.com/asymmetric-encrypting-of-sensitive-data-in-memory-python-e20fdebc521c)
 
 
+## symmetric cryptography
 
+[Symmetric encryption] -> https://livebook.manning.com/book/practical-python-security/chapter-4/35
 
+[Fernet (symmetric encryption) using Cryptography module in Python] -> https://www.geeksforgeeks.org/fernet-symmetric-encryption-using-cryptography-module-in-python/ 
 
-## Symmetric cryptography
+[Symmetric encryption] -> https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/
 
 [symmetric-vs-asymmetric-encryption] -> (https://www.trentonsystems.com/blog/symmetric-vs-asymmetric-encryption)
 
