@@ -15,7 +15,11 @@
 
 [Fernet (symmetric encryption) using Cryptography module in Python] -> https://www.geeksforgeeks.org/fernet-symmetric-encryption-using-cryptography-module-in-python/ 
 
-[Symmetric encryption] -> https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/
+[Cipher Symmetric encryption with AES] -> https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/
+[example code (cipher package)] -> https://gist.github.com/btoueg/f71b62f456550da42ea9f4a4bd907d21
+                                -> https://www.programcreek.com/python/example/103098/cryptography.hazmat.primitives.ciphers.modes.GCM
+
+[Fernet (symmetric encryption) ] -> https://cryptography.io/en/latest/fernet/
 
 [symmetric-vs-asymmetric-encryption] -> (https://www.trentonsystems.com/blog/symmetric-vs-asymmetric-encryption)
 
