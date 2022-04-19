@@ -1,0 +1,9 @@
+Advanced Encryption Standard(AES) is a symmetric encryption algorithm. AES is the industry standard as of now as it allows 128 bit, 192 bit and 256 bit encryption.Symmetric encryption is very fast as compared to asymmetric encryption and are used in systems such as database system. Following is an online tool to generate AES encrypted password and decrypt AES encrypted password. It provides two mode of encryption and decryption ECB and CBC mode. For more info on AES encryption visit this explanation on AES Encryption.
+
+Also, you can find the sample usage screenshot below:
+
+For encryption, you can either enter the plain text, password, an image file or a .txt file that you want to encrypt. Now choose the block cipher mode of encryption. ECB(Electronic Code Book) is the simplest encryption mode and does not require IV for encryption. The input plain text will be divided into blocks and each block will be encrypted with the key provided and hence identical plain text blocks are encrypted into identical cipher text blocks. CBC mode is highly recommended and it requires IV to make each message unique. If no IV is entered then default will be used here for CBC mode and that defaults to a zero based byte[16]
+
+
+
+

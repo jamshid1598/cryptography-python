@@ -27,6 +27,22 @@
 
 
 
+## sentry
+
+[django-sentry docs] -> (https://docs.sentry.io/platforms/python/guides/django/)
+                        (https://github.com/settings/connections/applications/Iv1.bcf13fc7ffcdd602)
+
+
+## grafana
+
+[grafanalib docs] -> (https://grafanalib.readthedocs.io/en/stable/getting-started.html)
+[django-prometheus] -> (https://github.com/korfuri/django-prometheus/)
+
+
+## django-storages (amazon s3)
+
+[django-storages docs] -> (https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)
+[Setup Amazon S3 in a Django] -> (https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html)
 
 
 

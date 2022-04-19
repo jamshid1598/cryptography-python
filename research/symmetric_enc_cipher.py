@@ -82,7 +82,9 @@ def decrypt(stored_encrypted_data, key):
 
 if __name__ == "__main__":
     key = os.urandom(32)
+    print(key)
     key = str(base64.b64encode(key), 'utf-8')
+    
     
     stored_encrypted_data = encrypt(plaintext.encode(), key)
     print(stored_encrypted_data)
